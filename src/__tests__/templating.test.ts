@@ -1370,6 +1370,19 @@ Morbi dignissim consequat ex, non finibus est faucibus sodales. Integer sed just
         );
         expect(result).toMatchSnapshot();
       });
+
+      it('Preserves drawing elements', async () => {
+        const template = await fs.promises.readFile(
+          path.join(__dirname, 'fixtures', 'anchor.docx')
+        );
+        const opts = {
+          template,
+          data: {},
+        };
+        const result = await createReport(opts, 'XML');
+
+        expect(result).toMatchSnapshot();
+      });
     });
   });
 });
